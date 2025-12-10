@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Mi Portafolio de Proyectos</title>
-   <link rel="stylesheet" href="styles.css"> </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Inicio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
+    <header>
+        <div class="header-container">
+            <div class="logo">Mi Portfolio</div>
+            <nav>
+                <button class="menu-toggle" id="mobile-menu">☰</button>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Inicio</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-   <header class="page-header">
-       <h1>Mi Portafolio</h1>
-       <nav>
-           <a href="#proyectos">Proyectos</a>
-           <a href="#contacto">Contacto</a>
-       </nav>
-   </header>
+    <section class="hero">
+        <h1>Bienvenido a mi Portfolio Personal</h1>
+        <p>Desarrollador Web & Creativo</p>
+    </section>
 
+    <section class="featured-projects container">
+        <h2>Proyectos Destacados</h2>
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-header">Proyecto TR</div>
+                <div class="card-body">
+                    <div class="placeholder-img"></div>
+                    <p>Resumen breve del proyecto técnico.</p>
+                    <a href="detalle.html" class="btn-small">Ver Detalles</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Título P2</div>
+                <div class="card-body">
+                    <div class="placeholder-img"></div>
+                    <p>Resumen breve del segundo proyecto.</p>
+                    <a href="#" class="btn-small">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-   <main class="main-content">
-       <div class="projects-container">
+    <footer>
+        <p>&copy; <span id="year"></span> Mi Portfolio. Todos los derechos reservados.</p>
+    </footer>
 
-
-           <section class="project-card">
-               <h2>Título del Proyecto 1</h2>
-               <p>Breve descripción de este proyecto. Aquí iría una imagen o una demo.</p>
-               <a href="#">Ver Proyecto</a>
-           </section>
-
-
-           <section class="project-card">
-               <h2>Título del Proyecto 2</h2>
-               <p>Breve descripción de este segundo proyecto. Es importante que ambos tengan contenido similar.</p>
-               <a href="#">Ver Proyecto</a>
-           </section>
-
-
-       </div>
-   </main>
-
-
-   <footer class="page-footer">
-       <p>&copy; 2025 Mi Nombre. Todos los derechos reservados.</p>
-   </footer>
-
-
+    <script src="script.js"></script>
 </body>
 </html>

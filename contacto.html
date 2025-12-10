@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Portfolio Científico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Portfolio Científico ⚛️</div> <!-- Logo con icono de átomo para inspiración en física cuántica -->
+            <nav>
+                <button class="menu-toggle">☰</button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="contacto.html" class="active">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="form-wrapper">
+        <div class="container-form">
+            <h1>Contáctame</h1>
+            <p style="text-align: center; font-family: 'Roboto Mono', monospace; color: #00d4ff;">Explora la física detrás de mis proyectos. E = mc²</p> <!-- Añadido para inspiración en relatividad -->
+            <form id="contactForm" action="#" method="post">
+                <label for="nombre">Nombre <span class="required">*</span></label>
+                <input type="text" id="nombre" name="nombre" required pattern="[A-Za-z\s]+" title="Solo letras y espacios">
+
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="asunto">Asunto</label>
+                <input type="text" id="asunto" name="asunto">
+
+                <label for="telefono">Teléfono <span class="required">*</span></label>
+                <input type="tel" id="telefono" name="telefono" required pattern="[\+]?[0-9\s\-\.]+" placeholder="+123 456 7890">
+
+                <label for="mensaje">Mensaje <span class="required">*</span></label>
+                <textarea id="mensaje" name="mensaje" required minlength="10" maxlength="500"></textarea>
+
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Portfolio Científico. Todos los derechos reservados. Inspirado en la física y la innovación.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
