@@ -42,8 +42,7 @@ body {
 h1, h2, h3 {
     font-family: 'Share Tech Mono', monospace;
     text-transform: uppercase;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+    color: var(--neon-cyan); /* Cambiado a un único color cyan, sin text-shadow para evitar "doble color" */
     letter-spacing: 2px;
 }
 
@@ -76,11 +75,9 @@ header {
 .logo {
     font-family: 'Share Tech Mono', monospace;
     font-size: 2em;
-    color: var(--neon-cyan);
-    text-shadow: 2px 2px 0px var(--neon-purple); /* Efecto glitch simple */
+    color: var(--neon-cyan); /* Mantenido cyan, pero eliminado el text-shadow para quitar el efecto de "rosa" (púrpura) mezclado */
 }
 
-/* --- NAVEGACIÓN --- */
 .nav-links {
     list-style: none;
     padding: 0;
@@ -206,15 +203,15 @@ header {
     position: relative;
 }
 
-/* Efecto de escaneo en imagen */
-.placeholder-img::after {
+/* Efecto de escaneo en imagen - REMOVIDO para eliminar la línea que sube y baja */
+ /* .placeholder-img::after {
     content: '';
     position: absolute;
     top: 0; left: 0; width: 100%; height: 2px;
     background: var(--neon-purple);
     animation: scan 3s infinite linear;
     opacity: 0.5;
-}
+} */
 @keyframes scan { 0% {top: 0;} 100% {top: 100%;} }
 
 /* --- FORMULARIO (ESTÁTICO Y DETALLADO) --- */
@@ -339,4 +336,13 @@ footer {
         border-bottom: 2px solid var(--neon-cyan);
     }
     .nav-links.active { display: flex; }
+}
+
+.project-img-tr {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
 }
