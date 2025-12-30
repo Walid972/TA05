@@ -56,40 +56,94 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* =========================================
-       3. SONIDOS DE INTERFAZ (AUDIO SYNTH)
+       3. POLVOS INTERACTIVOS GRISES EN EL FONDO
        ========================================= */
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    // Crear canvas para el fondo
+    const canvas = document.createElement('canvas');
+    canvas.id = 'backgroundCanvas';
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.zIndex = '-1'; // Detrás de todo
+    canvas.style.pointerEvents = 'none'; // No interfiere con clics
+    document.body.appendChild(canvas);
 
-    function playCyberSound(type) {
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        const oscillator = audioCtx.createOscillator();
-        const gainNode = audioCtx.createGain();
-        oscillator.connect(gainNode);
-        gainNode.connect(audioCtx.destination);
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-        if (type === 'hover') {
-            oscillator.type = 'sine';
-            oscillator.frequency.setValueAtTime(400, audioCtx.currentTime);
-            oscillator.frequency.linearRampToValueAtTime(600, audioCtx.currentTime + 0.05);
-            gainNode.gain.setValueAtTime(0.02, audioCtx.currentTime);
-            gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.05);
-            oscillator.start();
-            oscillator.stop(audioCtx.currentTime + 0.05);
-        } else if (type === 'click') {
-            oscillator.type = 'square';
-            oscillator.frequency.setValueAtTime(150, audioCtx.currentTime);
-            oscillator.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.1);
-            gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
-            oscillator.start();
-            oscillator.stop(audioCtx.currentTime + 0.1);
+    // Partículas (polvos grises)
+    const particles = [];
+    const particleCount = 100; // Número de polvos
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 3 + 1; // Tamaño pequeño
+            this.speedX = (Math.random() - 0.5) * 0.5; // Movimiento lento
+            this.speedY = (Math.random() - 0.5) * 0.5;
+            this.color = 'rgba(128, 128, 128, 0.5)'; // Gris semi-transparente
+        }
+
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            // Rebote en bordes
+            if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+            if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+        }
+
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
         }
     }
 
+    // Inicializar partículas
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
+
+    // Animación
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(particle => {
+            particle.update();
+            particle.draw();
+        });
+        requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // Función para efecto interactivo (dispersar polvos)
+    function disperseParticles() {
+        particles.forEach(particle => {
+            particle.speedX += (Math.random() - 0.5) * 2; // Aceleración aleatoria
+            particle.speedY += (Math.random() - 0.5) * 2;
+            setTimeout(() => {
+                particle.speedX *= 0.9; // Frenar gradualmente
+                particle.speedY *= 0.9;
+            }, 1000);
+        });
+    }
+
+    // Aplicar dispersión en interacciones
     const interactiveElements = document.querySelectorAll('a, button, input, .card');
     interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => playCyberSound('hover'));
-        el.addEventListener('click', () => playCyberSound('click'));
+        el.addEventListener('mouseenter', disperseParticles);
+        el.addEventListener('click', disperseParticles);
+    });
+
+    // Redimensionar canvas al cambiar ventana
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
     });
 
     /* EXTRAS (Menú, Año, Validación) */
@@ -108,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            playCyberSound('click');
+            disperseParticles(); // Dispersar polvos al enviar
             alert('CONFIRMACIÓN: DATOS ENVIADOS AL NÚCLEO.');
             contactForm.reset();
         });
