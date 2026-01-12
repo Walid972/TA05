@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle del Proyecto - Tienda de Zapatos</title>
+    <title>Detalle del Proyecto - Tienda de Zapatillas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,28 +23,76 @@
     </header>
 
     <div class="purple-banner">
-        <h2>Tienda de Zapatos Online</h2>
+        <h2>Tienda de Zapatillas (Aplicación de Escritorio)</h2>
     </div>
 
     <section class="container detail-grid">
         <div class="detail-text">
             <h3>Descripción</h3>
-            <p>Este proyecto es mi primera web completa, una tienda de zapatos online desarrollada utilizando tecnologías básicas pero efectivas: HTML para la estructura, CSS para el diseño y estilos, JavaScript para la interactividad y JSON para almacenar y gestionar los datos de los productos. La tienda permite a los usuarios navegar por una colección de zapatos, ver detalles de cada producto, agregar artículos al carrito de compras y simular un proceso de compra. Incluye características como filtros por categoría, búsqueda de productos y una interfaz responsiva que se adapta a dispositivos móviles y de escritorio.</p>
+            <p>
+                Este proyecto consiste en una <strong>aplicación de escritorio de una tienda de zapatillas</strong>,
+                desarrollada en <strong>Python</strong> utilizando la librería <strong>Tkinter</strong> para la
+                interfaz gráfica. La aplicación simula un sistema de compra en el que el usuario puede visualizar
+                productos, añadirlos a un carrito, eliminar artículos y finalizar una compra.
+            </p>
+
+            <p>
+                Los productos se cargan desde un archivo <strong>JSON</strong>, que almacena información como el
+                nombre, precio e imagen de cada zapatilla. La aplicación presenta los productos de forma visual
+                y permite modificar la disposición de la vista para mejorar la experiencia del usuario.
+                El sistema incluye un carrito de compras funcional que calcula automáticamente el total
+                y guarda el registro de la compra en un archivo JSON.
+            </p>
+
+            <p>
+                Además, el proyecto incorpora un sistema básico de <strong>gestión de credenciales</strong>,
+                que permite verificar la contraseña actual del usuario y establecer una nueva que cumpla
+                ciertos requisitos de seguridad.
+            </p>
+
             <h3>Más Detalles Técnicos</h3>
-            <p>El proyecto se basa en un enfoque modular: el HTML define la estructura de las páginas (inicio, catálogo, carrito), el CSS proporciona un diseño moderno y atractivo con animaciones sutiles, JavaScript maneja la lógica del carrito (agregar, eliminar, calcular totales) y JSON se utiliza para simular una base de datos local con información de productos como nombre, precio, imagen y descripción. No se utilizaron frameworks avanzados para mantenerlo simple y educativo, enfocándome en los fundamentos del desarrollo web. El resultado es una experiencia de usuario fluida que demuestra habilidades en manipulación del DOM, eventos de JavaScript y gestión de datos.</p>
+            <p>
+                La aplicación está desarrollada con un enfoque práctico y educativo, utilizando tecnologías
+                fundamentales de Python:
+            </p>
+
+            <ul>
+                <li><strong>Tkinter</strong> para la creación de la interfaz gráfica, ventanas, botones y eventos.</li>
+                <li><strong>PIL (Pillow)</strong> para la carga y redimensionado de imágenes de los productos.</li>
+                <li><strong>JSON</strong> como sistema de almacenamiento de datos.</li>
+            </ul>
+
+            <p>Archivos JSON utilizados:</p>
+            <ul>
+                <li><strong>zapatillas.json</strong>: información de los productos.</li>
+                <li><strong>credencials.json</strong>: datos de autenticación del usuario.</li>
+                <li><strong>compra.json</strong>: registro de compras realizadas.</li>
+            </ul>
+
+            <p>Funcionalidades del carrito de compras:</p>
+            <ul>
+                <li>Añadir y eliminar productos dinámicamente.</li>
+                <li>Cálculo automático del total de la compra.</li>
+                <li>Almacenamiento de la compra final en un archivo JSON.</li>
+            </ul>
+
+            <p>
+                No se han utilizado frameworks avanzados, lo que permite centrarse en los
+                <strong>fundamentos de la programación</strong>, la gestión de archivos, estructuras de datos
+                y el desarrollo de interfaces gráficas. El proyecto demuestra conocimientos en Python,
+                programación orientada a eventos y manejo de datos, ofreciendo una experiencia clara y funcional.
+            </p>
         </div>
 
         <div class="detail-image">
-            <div class="placeholder-img-large">Imagen de la Tienda de Zapatos</div>
+            <div class="placeholder-img-large">
+                Imagen de la Aplicación de la Tienda
+            </div>
         </div>
     </section>
 
     <div class="container">
-        <a
-            href="proyecto.zip"
-            download="tienda-zapatos.zip"
-            class="pdf-bar"
-        >
+        <a href="proyecto.zip" download="tienda-zapatillas.zip" class="pdf-bar">
             Descargar Código Fuente (ZIP)
         </a>
     </div>
@@ -52,6 +100,7 @@
     <footer>
         <p>&copy; <span id="year"></span> Mi Portfolio.</p>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
